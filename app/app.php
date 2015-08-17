@@ -36,15 +36,15 @@
     // search for task function
     $app->get("/task_search_results", function() use ($app){
         $task_to_search = $_GET['search_name'];
-        if (strlen($task_to_search) > 0){
-            //change Task::find() to return array
-            //=================================
-            $found_tasks = (Task::find($task_to_search));
-            var_dump($found_tasks);
+        // if (strlen($task_to_search) > 0){
+        //     //change Task::find() to return array
+        //     //=================================
+             $found_tasks = (Task::find($task_to_search));
+            // var_dump($found_tasks);
             return $app['twig']->render('task_search_results.html.twig', array('tasks' => $found_tasks));
-        } else{
-            return $app['twig']->render('error.html.twig');
-        }
+        // } else{
+        //     return $app['twig']->render('error.html.twig');
+        // }
     });
 
 
