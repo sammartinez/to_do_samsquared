@@ -32,17 +32,17 @@ class Task
         $this->id = $GLOBALS['DB']->lastInsertId();
     }
 
-    static function find($search_id)
+    static function find($search_name)
     {
-        $found_task = null;
+        $found_tasks = array();
         $tasks = Task::getAll();
         foreach($tasks as $task){
-            $task_id = $task->getId();
-            if ($task_id == $search_id){
-                $found_task = $task;
+            //$task_name = $task->getDescription();
+            if ($task->getDescription() == $search_name){
+                array_push($found_tasks, $task->getDescription());
             }
         }
-        return $found_task;
+        return $found_tasks;
     }
 
     static function getAll()
