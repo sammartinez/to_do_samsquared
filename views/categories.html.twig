@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootsrap.min.css'>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
         <title>To Do List</title>
     </head>
     <body>
+        <div class="container">
         <h1>Categories</h1>
         {% if categories is not empty %}
             <p>Here are all your categories:</p>
@@ -19,12 +20,13 @@
             <label for="name">Category Name</label>
             <input id="name" name="name" type="text">
 
-            <button type="submit">Add category</button>
+            <button class="btn btn-primary" type="submit">Add category</button>
         </form>
         <form action="/delete_categories" method="post">
-            <button type="submit">Clear</button>
+            <button class="btn btn-danger" type="submit">Clear</button>
         </form>
-
-        <p><a href="/">Home</a></p>
+        <br/>
+        <p><a class="btn btn-default" href="/">Home</a></p>
+    </div>
     </body>
 </html>

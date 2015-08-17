@@ -13,7 +13,7 @@
     $app->register(new Silex\Provider\TwigServiceProvider(), array(
         'twig.path' => __DIR__.'/../views'
     ));
-
+    //Home page
     $app->get("/", function() use ($app)
     {
         return $app['twig']->render('index.html.twig');
@@ -26,8 +26,12 @@
 
     $app->post("/tasks", function() use ($app){
         $task = new Task($_POST['name']);
-        $task->save();
-        return $app['twig']->render('tasks.html.twig', array('tasks' => Task::getAll()));
+        if (strlen($task->getDescription()) > 0){
+            $task->save();
+            return $app['twig']->render('tasks.html.twig', array('tasks' => Task::getAll()));
+        }else{
+            return $app['twig']->render('error.html.twig');
+        }
     });
 
     $app->post("/delete_tasks", function() use ($app){
@@ -41,8 +45,12 @@
 
     $app->post("/categories", function() use ($app){
         $category = new Category($_POST['name']);
-        $category->save();
-        return $app['twig']->render('categories.html.twig', array('categories' => Category::getAll()));
+        if (strlen($category->getName()) > 0){
+            $category->save();
+            return $app['twig']->render('categories.html.twig', array('categories' => Category::getAll()));
+        }else{
+            return $app['twig']->render('error.html.twig');
+        }
     });
 
     $app->post("/delete_categories", function() use ($app){

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+        <title>To Do List</title>
+    </head>
+    <body>
+        <div class="container">
+            {% if tasks is not empty %}
+                <h1>Found Tasks</h1>
+                <ul>
+                    {% for task in tasks %}
+                        <li>{{ task.getDescription }}</li>
+                    {% endfor %}
+                </ul>
+            {% elseif %}
+                <h1>No Tasks match your search! Enjoy your day.</h1>
+            {% endif %}
+            </br>
+            <a class="btn btn-default" href="/">Home</a>
+
+        </div>
+
+    </body>
+    </html>
