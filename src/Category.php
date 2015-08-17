@@ -25,6 +25,11 @@
             return $this->id;
         }
 
+        function setId($new_id)
+        {
+            $this->id = $new_id;
+        }
+
         function save()
         {
             $GLOBALS['DB']->exec("INSERT INTO categories (name) VALUES ('{$this->getName()}')");
@@ -49,6 +54,19 @@
         static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM categories;");
+        }
+
+        static function find($search_id)
+        {
+            $found_category = null;
+            $categories = Category::getAll();
+            foreach($categories as $category){
+                $category_id = $category->getId();
+                if ($category_id == $search_id){
+                    $found_category = $category;
+                }
+            }
+            return $found_category;
         }
     }
 

@@ -109,7 +109,7 @@
             $result = Category::find($test_Category->getId());
 
             //Assert
-            $this-assertEquals($test_Category, $result);
+            $this->assertEquals($test_Category, $result);
         }
     }
 ?>
