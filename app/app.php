@@ -36,11 +36,11 @@
 
     });
 
-    $app->get("/task_search_results", function() use ($app) {
-        $task_to_search = $_GET['search_name'];
-             $found_tasks = (Task::find($task_to_search));
-            return $app['twig']->render('task_search_results.html.twig', array('tasks' => $found_tasks));
-    });
+    // $app->get("/task_search_results", function() use ($app) {
+    //     $task_to_search = $_GET['search_name'];
+    //          $found_tasks = (Task::find($task_to_search));
+    //         return $app['twig']->render('task_search_results.html.twig', array('tasks' => $found_tasks));
+    // });
 
     $app->post("/delete_tasks", function() use ($app) {
         Task::deleteAll();
