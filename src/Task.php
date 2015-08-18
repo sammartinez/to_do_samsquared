@@ -34,7 +34,7 @@ class Task
 
     function save()
     {
-        $GLOBALS['DB']->exec("INSERT INTO tasks (description) VALUES ('{$this->getDescription()}', {$this->category_id()})");
+        $statement = $GLOBALS['DB']->exec("INSERT INTO tasks (description, category_id) VALUES ('{$this->getDescription()}', {$this->getCategoryId()})");
         $this->id = $GLOBALS['DB']->lastInsertId();
     }
 
@@ -58,19 +58,30 @@ class Task
         $GLOBALS['DB']->exec("DELETE FROM tasks;");
     }
 
-    static function find($search_name)
+    // static function find($search_name)
+    // {
+    //     $found_tasks = array();
+    //     $tasks = Task::getAll();
+    //     foreach($tasks as $task){
+    //         if ($task->getDescription() == $search_name){
+    //             array_push($found_tasks, $task->getDescription());
+    //         }
+    //     }
+    //     return $found_tasks;
+    // }
+
+    static function find($search_id)
     {
-        $found_tasks = array();
+        $found_task = null;
         $tasks = Task::getAll();
-        foreach($tasks as $task){
-            if ($task->getDescription() == $search_name){
-                array_push($found_tasks, $task->getDescription());
+        foreach($tasks as $task) {
+            $task_id = $task->getId();
+            if ($task_id == $search_id) {
+                $found_task = $task;
             }
         }
-        return $found_tasks;
+        return $found_task;
     }
-
-
 }
 
 ?>
