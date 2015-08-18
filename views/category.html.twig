@@ -14,11 +14,7 @@
             <p>Here are the tasks:</p>
             <ul>
                 {% for task in tasks %}
-                    <li>{{ task.getDescription }}
-                        {% if task.getDueDate is not empty %}
-                            , due by: {{ task.getDueDate }}
-                        {% endif %}
-                    </li>
+                    <li>{{ task.getDescription }}, due by: {{ task.getDueDate }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
@@ -31,7 +27,7 @@
             <input id='description' name='description' type='text'>
             <br/>
             <label for ='due_date'>Task Due Date</label><br/>
-            <input id='due_date' name='due_date' type='text'>
+            <input id='due_date' name='due_date' type='text' placeholder='yyyy-mm-dd'>
 
             <button class="btn-default" type='submit'>Add task</button>
         </form>

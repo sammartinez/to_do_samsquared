@@ -11,3 +11,7 @@ div {
 li{
     font-family: 'Indie Flower', cursive;
 }
+
+a:link {
+    color: white;
+}
