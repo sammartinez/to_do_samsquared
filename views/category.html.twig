@@ -14,7 +14,11 @@
             <p>Here are the tasks:</p>
             <ul>
                 {% for task in tasks %}
-                    <li>{{ task.getDescription }}, due by: {{ task.getDueDate }}</li>
+                    <li>{{ task.getDescription }}
+                        {% if task.getDueDate is not empty %}
+                            , due by: {{ task.getDueDate }}
+                        {% endif %}
+                    </li>
                 {% endfor %}
             </ul>
         {% endif %}
