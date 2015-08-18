@@ -8,9 +8,10 @@
     </head>
     <body>
         <div class="container">
-        <h1>Tasks</h1>
+        <h1>{{ category.getName }}</h1>
+
         {% if tasks is not empty %}
-            <p>Here are all your tasks:</p>
+            <p>Here are the tasks:</p>
             <ul>
                 {% for task in tasks %}
                     <li>{{ task.getDescription }}</li>
@@ -18,17 +19,17 @@
             </ul>
         {% endif %}
 
-        <form action="/tasks" method="post">
-            <label for="name">Task Name</label>
-            <input id="name" name="name" type="text">
+        <h4>Add a task</h4>
 
-            <button class="btn btn-primary" type="submit">Add task</button>
+        <form action='/tasks' method='post'>
+            <input id='category_id' name='category_id' type='hidden' value='{{ category.getId() }}'>
+            <label for ='description'>Task Description</label>
+            <input id='description' name='description' type='text'>
+
+            <button type='submit'>Add task</button>
         </form>
-        <form action="/delete_tasks" method="post">
-            <button class="btn btn-danger" type="submit">Clear</button>
-        </form>
-        <br/>
-        <p><a class="btn btn-default" href="/">Home</a></p>
-    </div>
+
+        <p><a href='/'>Home</p>
+        </div>
     </body>
 </html>

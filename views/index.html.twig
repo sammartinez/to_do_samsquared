@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
     <link href="css/custom.css" rel='stylesheet' type="text/css">
@@ -10,18 +9,24 @@
     <div class="container">
         <h1>Welcome to To Do List</h1>
 
-        <p><a href="/categories">Click here</a> to see all of the categories and to add a category.</p>
-        <p><a href="/tasks">Click here</a> to see all of the tasks and to add a task.</p>
+        <p>Create a new category:</p>
 
-        <h3>Search for a task:</h3>
-        <form action="/task_search_results" method="get">
-            <label for="search_name">Task Name</label>
-            <input id="search_name" name="search_name" type="text">
+        <form action="/categories" method="post">
+            <label for="name">Category name:</label>
+            <input id="name" name="name" type="text">
 
-            <button class="btn btn-primary" type="submit">Search for task</button>
+            <button type="submit">Add category</button>
         </form>
 
+        {% if categories is not empty %}
+            <p>Here are all your categories:</p>
+            <ul>
+                {% for category in categories %}
+                    <li><a href="/categories/{{ category.getId }}">{{ category.getName }}</a></li>
+                {% endfor %}
+            {% else %}
+                <p>There are no categories yet!</p>
+        {% endif %}
     </div>
-
 </body>
 </html>
