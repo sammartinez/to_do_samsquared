@@ -15,7 +15,7 @@
             <label for="name">Category name:</label>
             <input id="name" name="name" type="text">
 
-            <button type="submit">Add category</button>
+            <button class="btn-default" type="submit">Add category</button>
         </form>
 
         {% if categories is not empty %}
@@ -24,9 +24,14 @@
                 {% for category in categories %}
                     <li><a href="/categories/{{ category.getId }}">{{ category.getName }}</a></li>
                 {% endfor %}
+            </ul>
             {% else %}
                 <p>There are no categories yet!</p>
         {% endif %}
+        <br/>
+        <form action="/delete_categories" method="post">
+            <button class="btn-danger" type="submit">Clear</button>
+        </form>
     </div>
 </body>
 </html>

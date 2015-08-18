@@ -33,10 +33,14 @@
             <label for ='due_date'>Task Due Date</label><br/>
             <input id='due_date' name='due_date' type='text'>
 
-            <button type='submit'>Add task</button>
+            <button class="btn-default" type='submit'>Add task</button>
         </form>
 
-        <p><a href='/'>Home</p>
+        <form action="/delete_tasks" method="post">
+            <button class="btn-danger" type="submit">Clear</button>
+        </form>
+
+        <a href="/"><button class="btn-default">Home</button></a>
         </div>
     </body>
 </html>
