@@ -6,12 +6,13 @@
 
 ## Description
 
-Gets information from user about to-do list categories and let's the user input tasks and sort by date.
+Gets information from user about to-do list categories and lets the user input tasks and sort by date.
 
 ## Setup
 
 * _Clone this repository_
 * _Run composer install in project folder_
+* _Unzip to_do.sql and import to MySQL database_
 * _Start PHP server in web folder_
 * _Navigate web browser to localhost:8000_
 * _Wash the dog_
