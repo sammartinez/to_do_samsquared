@@ -56,6 +56,12 @@
             $GLOBALS['DB']->exec("DELETE FROM categories;");
         }
 
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM categories WHERE id = {$this->getId()};");
+            $GLOBALS['DB']->exec("DELETE FROM tasks WHERE category_id = {$this->getId()};");
+        }
+
         static function find($search_id)
         {
             $found_category = null;
