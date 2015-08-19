@@ -41,7 +41,7 @@
         {
             $returned_categories = $GLOBALS['DB']->query("SELECT * FROM categories;");
             $categories = array();
-            foreach($returned_categories as $category) {
+            foreach ($returned_categories as $category) {
                 $name = $category['name'];
                 $id = $category['id'];
                 $new_category = new Category($name, $id);
@@ -71,8 +71,7 @@
 
         function getTasks()
         {
-            $tasks = Array();
-            // $returned_tasks = $GLOBALS['DB']->query("SELECT * FROM tasks ORDER BY due_date ASC;");
+            $tasks = array();
             $returned_tasks = $GLOBALS['DB']->query("SELECT * FROM tasks WHERE category_id = {$this->getId()} ORDER BY due_date ASC;");
             foreach($returned_tasks as $task) {
                 $description = $task['description'];
@@ -84,8 +83,12 @@
             }
             return $tasks;
         }
+
+        function update($new_name)
+        {
+            $GLOBALS['DB']->exec("UPDATE categories SET name = '{$new_name}' WHERE id = {$this->getId()};");
+            $this->setName($new_name);
+        }
+
     }
-
-
-
 ?>
