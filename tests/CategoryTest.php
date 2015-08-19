@@ -161,7 +161,7 @@
 
         function testDelete()
         {
-            //arrange
+            //Arrange
             $name = "Work stuff";
             $id = null;
             $test_category = new Category($name, $id);
@@ -170,6 +170,7 @@
             $name2 = "Home stuff";
             $test_category2 = new Category($name2, $id);
             $test_category2->save();
+
 
             //Act
             $test_category->delete();
