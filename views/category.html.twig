@@ -11,34 +11,31 @@
         <h1>{{ category.getName }}</h1>
 
         {% if tasks is not empty %}
-            <p>Here are the tasks:</p>
+            <p>Here are the tasks for this category:</p>
             <ul>
                 {% for task in tasks %}
-                    <li>{{ task.getDescription }}, due by: {{ task.getDueDate }}</li>
+                    <li>{{ task.getDescription }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
 
-        <h4>Add a task</h4>
+        <h4>Add a task to this category:</h4>
 
-        <form action='/tasks' method='post'>
+        <form action='/add_tasks' method='post'>
             <input id='category_id' name='category_id' type='hidden' value='{{ category.getId() }}'>
-            <label for ='description'>Task Description</label><br/>
-            <input id='description' name='description' type='text'>
-            <br/>
-            <label for ='due_date'>Task Due Date</label><br/>
-            <input id='due_date' name='due_date' type='text' placeholder='yyyy-mm-dd'>
 
-            <button class="btn-default" type='submit'>Add task</button>
+            <label for ='task_id'>Select a task</label><br/>
+            <select id='task_id' name='task_id' type='text'>
+            {% for task in all_tasks %}
+                <option value="{{ task.getId }}"> {{ task.getDescription }}</option>
+            {% endfor %}
+            </select>
+            <button type="submit">Add task</button>
         </form>
 
-        <form action="/delete_tasks" method="post">
-            <button class="btn-danger" type="submit">Clear</button>
-        </form>
+        <a href="/categories/{{ category.getId }}/edit"> <button class="btn btn-default">Edit this category</button></a>
 
-        <a href="/categories/{{ category.getId }}/edit"> <button class="btn-default">Edit this category</button></a>
-
-        <a href="/"><button class="btn-default">Home</button></a>
+        <a href="/"><button class="btn btn-default">Home</button></a>
         </div>
     </body>
 </html>
