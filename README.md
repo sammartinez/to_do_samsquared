@@ -1,8 +1,8 @@
 # _To Do List_
 
-##### _A to do list that does some stuff, 18-Aug-2015_
+##### _A to do list that does some stuff, 24-Aug-2015_
 
-#### By _**Samantha Maturen and Deron Johnson**_
+#### By _**Samantha Maturen and Sam Martinez**_
 
 ## Description
 
