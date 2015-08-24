@@ -49,7 +49,7 @@
             $this->assertEquals("Drink coffee.", $result);
         }
 
-        function test_getId()
+        function testGetId()
         {
             //Arrange
             $id = 1;
@@ -63,30 +63,8 @@
             $this->assertEquals(1, $result);
         }
 
-        //From previous code. Leaving in case we need to refer back to it later on.
-
-            // function test_getCategoryId()
-            // {
-            //   //Arrange
-            //   $name = "Home stuff";
-            //   $id = null;
-            //   $test_category = new Category($name, $id);
-            //   $test_category->save();
-            //
-            //   $description = "Wash the dog";
-            //   $category_id = $test_category->getId();
-            //   $test_task = new Task($description, $id, $category_id);
-            //   $test_task->save();
-            //
-            //   //Act
-            //   $result = $test_task->getCategoryId();
-            //
-            //   //Assert
-            //   $this->assertEquals(true, is_numeric($result));
-            // }
-
         //test Task save function
-        function test_save()
+        function testSave()
         {
             //Arrange
             $description = "Wash the dog";
@@ -117,7 +95,7 @@
         }
 
         //test Task getAll function
-        function test_getAll()
+        function testGetAll()
         {
             //Arrange
             $description = "Wash the dog";
@@ -138,7 +116,7 @@
         }
 
         //test Task deleteAll function
-        function test_deleteAll()
+        function testDeleteAll()
         {
             //Arrange
             $description = "Wash the dog";
@@ -159,7 +137,7 @@
             $this->assertEquals([], $result);
         }
 
-        function test_find()
+        function testFind()
         {
             //Arrange
             $description = "Wash the dog";
