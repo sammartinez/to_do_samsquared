@@ -13,22 +13,30 @@
             <p>Here are all your tasks:</p>
             <ul>
                 {% for task in tasks %}
-                    <li><a href="/tasks/{{ task.getId }}">{{ task.getDescription }}</a></li>
+                    <li><a href="/tasks/{{ task.getId }}">{{ task.getDescription }}, {{ task.getDueDate }}</a>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="status" value="0" name="status">
+                        </label>
+                    </div>
+                    </li>
                 {% endfor %}
             </ul>
         {% endif %}
 
         <form action="/tasks" method="post">
             <label for="description">Task Name</label>
-            <input id="description" name="description" type="text">
+            <input id="description" name="description" type="text" REQUIRED>
 
-            <button class="btn btn-default" type="submit">Add task</button>
+            <label for="due_date">Task Due Date</label>
+            <input id="due_date" name="due_date" type="date">
+            <button type="submit" class="btn btn-default">Add task</button>
         </form>
         <form action="/delete_tasks" method="post">
             <button class="btn btn-danger" type="submit">Clear</button>
         </form>
         <br/>
-        <a href="/"><button class="btn-default">Home</button></a>
+        <a href="/"><button class="btn btn-default">Home</button></a>
     </div>
     </body>
 </html>
