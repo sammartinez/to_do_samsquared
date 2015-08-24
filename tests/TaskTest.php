@@ -193,6 +193,8 @@
             //Assert
             $this->assertEquals([$test_task2], Task::getAll());
         }
+
+        
     }
 
 ?>

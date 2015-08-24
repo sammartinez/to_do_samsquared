@@ -175,5 +175,52 @@
             //Assert
             $this->assertEquals($test_category, $result);
         }
+
+        // tests whether a task is associated with a category
+        function testAddTask()
+        {
+            //Arrange
+            $name = "Work stuff";
+            $id = 1;
+            $test_category = new Category($name, $id);
+            $test_category->save();
+
+            $description = "File reports";
+            $id2 = 2;
+            $test_task = new Task($description, $id2);
+            $test_task->save();
+
+            //Act
+            $test_category->addTask($test_task);
+
+            //Assert
+            $this->assertEquals($test_category->getTasks(), [$test_task]);
+        }
+
+        function testGetTasks()
+        {
+            //Arrange
+            $name = "Work stuff";
+            $id = 1;
+            $test_category = new Category($name, $id);
+            $test_category->save();
+
+            $description = "Wash the dog";
+            $id2 = 2;
+            $test_task = new Task($description, $id2);
+            $test_task->save();
+
+            $description2 = "Take out the trash";
+            $id3 = 3;
+            $test_task2 = new Task($description2, $id3);
+            $test_task2->save();
+
+            //Act
+            $test_category->addTask($test_task);
+            $test_category->addTask($test_task2);
+
+            //Assert
+            $this->assertEquals($test_category->getTasks(), [$test_task, $test_task2]);
+        }
     }
 ?>
